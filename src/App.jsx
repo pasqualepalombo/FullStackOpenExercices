@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import viteLogo from '/vite.svg'
+
 
 const Header = (variabile) => {
-  console.log(variabile)
   return (
     <div>
       <h1>{variabile.course}</h1>
@@ -10,25 +9,28 @@ const Header = (variabile) => {
   )
 }
 
-const Content = (contenuto) => {
-  console.log(contenuto)
+const Part = (contenuto) => {
   return (
     <div>
       <p>
-        {contenuto.array[0]} {contenuto.array[1]}
-      </p>
-      <p>
-        {contenuto.array[2]} {contenuto.array[3]}
-      </p>
-      <p>
-        {contenuto.array[4]} {contenuto.array[5]}
+        {contenuto.contenuto[0]} {contenuto.contenuto[1]}
       </p>
     </div>
   )
 }
 
+const Content = (contenuto) => {
+  return (
+   <>
+   <Part contenuto={[contenuto.array[0],contenuto.array[1]]} />
+   <Part contenuto={[contenuto.array[2],contenuto.array[3]]} />
+   <Part contenuto={[contenuto.array[4],contenuto.array[5]]} />
+   </>
+
+  )
+}
+
 const Total = (totale) => {
-  console.log(totale)
   return (
     <div>
       <p>
