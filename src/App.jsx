@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 
-const Header = (variabile) => {
+const Header = (props) => {
   return (
     <div>
-      <h1>{variabile.course}</h1>
+      <h1>{props.props}</h1>
     </div>
   )
 }
@@ -13,7 +13,7 @@ const Part = (contenuto) => {
   return (
     <div>
       <p>
-        {contenuto.contenuto[0]} {contenuto.contenuto[1]}
+        {contenuto.contenuto.name} {contenuto.contenuto.exercises}
       </p>
     </div>
   )
@@ -22,19 +22,19 @@ const Part = (contenuto) => {
 const Content = (contenuto) => {
   return (
    <>
-   <Part contenuto={[contenuto.array[0],contenuto.array[1]]} />
-   <Part contenuto={[contenuto.array[2],contenuto.array[3]]} />
-   <Part contenuto={[contenuto.array[4],contenuto.array[5]]} />
+   <Part contenuto={contenuto.props[0]} />
+   <Part contenuto={contenuto.props[1]} />
+   <Part contenuto={contenuto.props[2]} />
    </>
 
   )
 }
 
-const Total = (totale) => {
+const Total = (props) => {
   return (
     <div>
       <p>
-        Total Exercises: {totale.array[0]+totale.array[1]+totale.array[2]}
+        Total Exercises: {props.props[0]+props.props[1]+props.props[2]}
       </p>
     </div>
   )
@@ -42,18 +42,24 @@ const Total = (totale) => {
 
 function App() {
   const course = 'Half Stack Application Development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const part1 = {
+    name:'Fundamentals of React',
+    exercises:10,
+  }
+  const part2 = {
+    name:'Using props to pass data',
+    exercises:7,
+  }
+  const part3 = {
+    name:'State of a component',
+    exercises:14,
+  }
 
   return (
     <div>
-      <Header course={course} />
-      <Content array={[part1,exercises1,part2,exercises2,part3,exercises3]} />
-      <Total array={[exercises1,exercises2,exercises3]} />
+      <Header props={course} />
+      <Content props={[part1,part2,part3]} />
+      <Total props={[part1.exercises,part2.exercises,part3.exercises]} />
     </div>
   )
 }
