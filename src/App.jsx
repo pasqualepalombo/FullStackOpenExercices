@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 
 const Header = (props) => {
+  console.log(props.props)
   return (
     <div>
       <h1>{props.props}</h1>
@@ -41,8 +42,9 @@ const Total = (props) => {
 }
 
 function App() {
-  const course = 'Half Stack Application Development'
-  const parts = [
+  const course = {
+    name:'Half Stack Application Development',
+    parts: [
     {
     name:'Fundamentals of React',
     exercises:10,
@@ -55,12 +57,13 @@ function App() {
     name:'State of a component',
     exercises:14,
     },
-  ]
+    ]
+  }
   return (
     <div>
-      <Header props={course} />
-      <Content props={parts} />
-      <Total props={parts} />
+      <Header props={course.name} />
+      <Content props={course.parts} />
+      <Total props={course.parts} />
     </div>
   )
 }
