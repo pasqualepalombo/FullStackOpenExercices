@@ -1,69 +1,33 @@
 import { useState } from 'react'
+// exercise 1.6
 
-
-const Header = (props) => {
-  console.log(props.props)
-  return (
-    <div>
-      <h1>{props.props}</h1>
-    </div>
-  )
+const Button = ({handleClick, text}) => {
+  <button onClick={console.log("click")}>{text}</button>
 }
 
-const Part = (contenuto) => {
+const App = () => {
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
   return (
     <div>
-      <p>
-        {contenuto.contenuto.name} {contenuto.contenuto.exercises}
-      </p>
-    </div>
-  )
-}
-
-const Content = (contenuto) => {
-  return (
-   <>
-   <Part contenuto={contenuto.props[0]} />
-   <Part contenuto={contenuto.props[1]} />
-   <Part contenuto={contenuto.props[2]} />
-   </>
-
-  )
-}
-
-const Total = (props) => {
-  return (
-    <div>
-      <p>
-        Total Exercises: {props.props[0].exercises+props.props[1].exercises+props.props[2].exercises}
-      </p>
-    </div>
-  )
-}
-
-function App() {
-  const course = {
-    name:'Half Stack Application Development',
-    parts: [
-    {
-    name:'Fundamentals of React',
-    exercises:10,
-    },
-    {
-    name:'Using props to pass data',
-    exercises:7,
-    },
-    {
-    name:'State of a component',
-    exercises:14,
-    },
-    ]
-  }
-  return (
-    <div>
-      <Header props={course.name} />
-      <Content props={course.parts} />
-      <Total props={course.parts} />
+      <h1>give feedback</h1>
+      <button onClick={()=> {
+        const updatedGood = good + 1
+        setGood(updatedGood)
+      }}>Good</button>
+      <button onClick={()=> {
+        const updatedNeutral = neutral + 1
+        setNeutral(updatedNeutral)
+      }}>Neutral</button>
+      <button onClick={()=> {
+        const updatedBad = bad + 1
+        setBad(updatedBad)
+      }}>Bad</button>
+      <h2>Statistics</h2>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
     </div>
   )
 }
