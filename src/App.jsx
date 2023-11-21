@@ -11,6 +11,17 @@ const Statistics = (props) => {
   if (allFeedbacks>0) {
     average = (good-bad)/allFeedbacks
     positive = good / allFeedbacks
+    return(
+      <div>
+        <h2>Statistics</h2>
+        <p>Good: {good}</p>
+        <p>Neutral: {neutral}</p>
+        <p>Bad: {bad}</p>
+        <p>Total of feedbacks: {allFeedbacks}</p>
+        <p>Average: {average}%</p>
+        <p>Positive: {positive}%</p>
+      </div>
+    )
   }
   return(
     <div>
@@ -19,8 +30,7 @@ const Statistics = (props) => {
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
       <p>Total of feedbacks: {allFeedbacks}</p>
-      <p>Average: {average}%</p>
-      <p>Positive: {positive}%</p>
+      <p>No feedback given</p>
     </div>
   )
 }
