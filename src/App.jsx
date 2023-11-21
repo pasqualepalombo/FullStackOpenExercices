@@ -1,53 +1,49 @@
-import { useState } from "react";
+import { useState } from 'react'
 // exercise 1.7 unicafe step2
 
+const Statistics = (props) => {
+  const good = props.props[0]
+  const neutral = props.props[1]
+  const bad = props.props[2]
+  const allFeedbacks = good+neutral+bad
+  let average = 0
+  let positive = 0
+  if (allFeedbacks>0) {
+    average = (good-bad)/allFeedbacks
+    positive = good / allFeedbacks
+  }
+  return(
+    <div>
+      <h2>Statistics</h2>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
+      <p>Total of feedbacks: {allFeedbacks}</p>
+      <p>Average: {average}%</p>
+      <p>Positive: {positive}%</p>
+    </div>
+  )
+}
+
 const App = () => {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
-  const [allFeedbacks, setAllFeedbacks] = useState(0);
-
-  const Positive = (props) => {
-    const good = props.props[0];
-    const allFeedbacks = props.props[1];
-    let positive = 0;
-    if (allFeedbacks > 0) {
-      positive = good / allFeedbacks;
-    }
-    return <p>Average: {positive * 100}%</p>;
-  };
-
-  const Average = (props) => {
-    const good = props.props[0];
-    const bad = props.props[1];
-    const allFeedbacks = props.props[2];
-    let average = 0;
-    if (allFeedbacks > 0) {
-      average = (good - bad) / allFeedbacks;
-    }
-    return <p>Average: {average}%</p>;
-  };
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
   const handleGood = () => {
-    const updatedGood = good + 1;
-    setGood(updatedGood);
-    const updatedAllFeedbacks = allFeedbacks + 1;
-    setAllFeedbacks(updatedAllFeedbacks);
-  };
+    const updatedGood = good + 1
+        setGood(updatedGood)
+  }
 
-  const handleNeutral = () => {
-    const updatedNeutral = neutral + 1;
-    setNeutral(updatedNeutral);
-    const updatedAllFeedbacks = allFeedbacks + 1;
-    setAllFeedbacks(updatedAllFeedbacks);
-  };
+const handleNeutral = () => {
+  const updatedNeutral = neutral + 1
+        setNeutral(updatedNeutral)
+}
 
-  const handleBad = () => {
-    const updatedBad = bad + 1;
-    setBad(updatedBad);
-    const updatedAllFeedbacks = allFeedbacks + 1;
-    setAllFeedbacks(updatedAllFeedbacks);
-  };
+const handleBad = () => {
+  const updatedBad = bad + 1
+        setBad(updatedBad)
+}
 
   return (
     <div>
@@ -55,15 +51,9 @@ const App = () => {
       <button onClick={handleGood}>Good</button>
       <button onClick={handleNeutral}>Neutral</button>
       <button onClick={handleBad}>Bad</button>
-      <h2>Statistics</h2>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Total of feedbacks: {allFeedbacks}</p>
-      <Average props={[good, bad, allFeedbacks]} />
-      <Positive props={[good, allFeedbacks]} />
+      <Statistics props={[good, neutral, bad]} />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
