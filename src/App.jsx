@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// exercise 1.12 anecdotes step1
+// exercise 1.13 anecdotes step2
 
 const App = () => {
   const anecdotes = [
@@ -14,16 +14,25 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [voted, setVoted] = useState(Array(anecdotes.length).fill(0))
 
   const randomNumber = () => {
     let random = Math.floor(Math.random()*anecdotes.length)
     setSelected(random)
   }
 
+  const voteMe = () => {
+    const newVotes = [...voted]
+    newVotes[selected] += 1
+    setVoted(newVotes)
+  }
+
   return (
     <div>
       <button onClick={randomNumber}>Random</button>
-      {anecdotes[selected]}
+      <p>{anecdotes[selected]}</p>
+      <p>This Anecdotes has: {voted[selected]}votes!</p>
+      <button onClick={voteMe}>Vote me!</button>
     </div>
   )
 }
