@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// exercise 1.13 anecdotes step2
+// exercise 1.14 anecdotes step3
 
 const App = () => {
   const anecdotes = [
@@ -27,12 +27,28 @@ const App = () => {
     setVoted(newVotes)
   }
 
+  const ReturnMaxValue = () => {
+    const maxValue = Math.max(...voted)
+    let value = 0
+    while (voted.length) {
+      if (voted[value]==maxValue) break
+      value += 1
+    }
+    return (
+      <p>{anecdotes[value]}</p>
+    )
+
+  }
+
   return (
     <div>
-      <button onClick={randomNumber}>Random</button>
+      <h1>Anecdote of the day:</h1>
       <p>{anecdotes[selected]}</p>
       <p>This Anecdotes has: {voted[selected]}votes!</p>
       <button onClick={voteMe}>Vote me!</button>
+      <button onClick={randomNumber}>Next Anecdote</button>
+      <h2>Most voted Anecdote:</h2>
+      <ReturnMaxValue />
     </div>
   )
 }
