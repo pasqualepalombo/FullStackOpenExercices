@@ -1,6 +1,16 @@
 import { useState } from 'react'
 
-// Exercise 2.1 information step 6
+// Exercise 2.2 information step 7
+
+const Total = ({parts}) => {
+  let total = 0
+  for (let i=0;i<parts.length;i++){
+    total += parts[i].exercises
+  }
+  return (
+    <p>Total of {total} exercises</p>
+  )
+}
 
 const Part = ({part}) => {
   return (
@@ -9,7 +19,6 @@ const Part = ({part}) => {
 }
 
 const Course = ({course}) => {
-  console.log(course.parts)
   var parts = course.parts
   return (
     <div>
@@ -17,6 +26,7 @@ const Course = ({course}) => {
       <ul>
         {parts.map(part => <Part key={part.id} part={part} />)}
       </ul>
+      <Total parts={parts} />
     </div>
   )
 }
