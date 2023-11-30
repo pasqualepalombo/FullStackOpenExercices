@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-// Exercise 2.2 information step 7
+// Exercise 2.3 information step 8
 
 const Total = ({parts}) => {
-  let total = 0
-  for (let i=0;i<parts.length;i++){
-    total += parts[i].exercises
-  }
+  let total = parts.reduce(function(sum, part){
+    return sum + part.exercises
+  },0)
+
   return (
     <p>Total of {total} exercises</p>
   )
