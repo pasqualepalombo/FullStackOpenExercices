@@ -1,35 +1,7 @@
 import { useState } from 'react'
+import Course from './components/Course'
 
-// Exercise 2.4 information step 9
-
-const Total = ({parts}) => {
-  let total = parts.reduce(function(sum, part){
-    return sum + part.exercises
-  },0)
-
-  return (
-    <p>Total of {total} exercises</p>
-  )
-}
-
-const Part = ({part}) => {
-  return (
-    <li>{part.name}</li>
-  )
-}
-
-const Course = ({course}) => {
-  var parts = course.parts
-  return (
-    <div>
-      <h2>{course.name}</h2>
-      <ul>
-        {parts.map(part => <Part key={part.id} part={part} />)}
-      </ul>
-      <Total parts={parts} />
-    </div>
-  )
-}
+// Exercise 2.5 information step 10
 
 const Courses = ({courses}) => {
   return (
